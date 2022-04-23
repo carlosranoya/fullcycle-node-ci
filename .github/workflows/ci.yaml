@@ -13,4 +13,4 @@ jobs:
       - run: npm install
       - run: npm test
       - run: node index
-
+      - run: curl https://viacep.com.br/ws/01001000/json/
