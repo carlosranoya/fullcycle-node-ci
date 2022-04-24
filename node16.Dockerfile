@@ -5,11 +5,11 @@ FROM ${NODE_VERSION}
 RUN echo ${NODE_VERSION}
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY ../../entrypoint.sh /entrypoint.sh
-COPY ../../package-lock.json /package-lock.json
-COPY ../../package.json /package.json
-COPY ../../index.js /index.js
-COPY ../../src src
+COPY entrypoint.sh /entrypoint.sh
+COPY package-lock.json /package-lock.json
+COPY package.json /package.json
+COPY index.js /index.js
+COPY src src
 
 RUN node --version
 RUN npm install
