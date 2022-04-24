@@ -29,30 +29,30 @@ jobs:
     steps:
       - run: echo 'branch ${{needs.matrix_prep.outputs.matrix}}'
       - run: echo 'github.ref ${{ github.ref }}'
-      # - run: echo 'github.ref_name ${{ github.ref_name }}'
-      # - run: echo 'github.ref_type ${{ github.ref_type }}'
-      # - run: echo 'github.path ${{ github.path }}'
-      # - run: echo 'github.repository ${{ github.repository }}'
-      # - run: echo 'github.job ${{ github.job }}'
-      # - run: echo 'github.event_name ${{ github.event_name }}'
-      # - run: echo 'github.env ${{ github.env }}'
-      #   env:
-      #     node-version: ${{ matrix.node }}
-      # - run: echo 'steps ${{ toJSON(steps) }}'
-      # - run: echo 'strategy ${{ toJSON(strategy) }}'
+      - run: echo 'github.ref_name ${{ github.ref_name }}'
+      - run: echo 'github.ref_type ${{ github.ref_type }}'
+      - run: echo 'github.path ${{ github.path }}'
+      - run: echo 'github.repository ${{ github.repository }}'
+      - run: echo 'github.job ${{ github.job }}'
+      - run: echo 'github.event_name ${{ github.event_name }}'
+      - run: echo 'github.env ${{ github.env }}'
+        env:
+          node-version: ${{ matrix.node }}
+      - run: echo 'steps ${{ toJSON(steps) }}'
+      - run: echo 'strategy ${{ toJSON(strategy) }}'
         
-      # - uses: actions/checkout@v3
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: ${{ matrix.node }}
-      # - run: npm install
-      # - run: npm test
-      # - run: node index
-      # - run: node buildNodeDockerfile ${{ matrix.node }}
-      # # - run: curl https://viacep.com.br/ws/01001000/json/
-      # - name: Hello world action step
-      #   uses: ./
-      #   id: Hello
-      #   with:
-      #     who-to-greet: 'Carlos'
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm test
+      - run: node index
+      - run: node buildNodeDockerfile ${{ matrix.node }}
+      # - run: curl https://viacep.com.br/ws/01001000/json/
+      - name: Hello world action step
+        uses: ./
+        id: Hello
+        with:
+          who-to-greet: 'Carlos'
 
