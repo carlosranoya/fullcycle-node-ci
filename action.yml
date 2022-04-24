@@ -16,5 +16,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - '--build-arg NODE_VERSION=node:${{ inputs.node-version }}'
+    # - '--build-arg NODE_VERSION=node:${{ inputs.node-version }}'
     - ${{ inputs.who-to-greet }}
