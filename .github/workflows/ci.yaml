@@ -18,7 +18,7 @@ jobs:
       - run: node index
       - run: curl https://viacep.com.br/ws/01001000/json/
       - name: Hello world action step
-        uses: ./actions/node${{ matrix.node }}
+        uses: ./actions/node16
         id: hello
         with:
           who-to-greet: 'Carlos'
