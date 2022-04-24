@@ -9,7 +9,7 @@ COPY entrypoint.sh /entrypoint.sh
 COPY package-lock.json /package-lock.json
 COPY package.json /package.json
 COPY index.js /index.js
-COPY utils.js /utils.js
+COPY buildNodeDockerfile.js /buildNodeDockerfile.js
 COPY src src
 
 RUN node --version
