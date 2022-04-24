@@ -27,7 +27,7 @@ jobs:
         action: ['14', '16']
     steps:
       - run: echo 'branch ${{needs.matrix_prep.outputs.matrix}}'
-      - run: echo 'Hi ${{ job.container.id }}'
+      - run: echo 'Hi ${{ job.name }}'
       - run: echo 'Hi ${{ env.node-action }}'
         env:
           node-action: ${{ matrix.action }}
