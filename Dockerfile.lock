@@ -1,5 +1,5 @@
 # Container image that runs your code
-ARG NODE_VERSION=node:16
+# ARG NODE_VERSION=node:16
 FROM ${NODE_VERSION}
 
 RUN echo ${NODE_VERSION}
