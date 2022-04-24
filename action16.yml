@@ -8,12 +8,12 @@ inputs:
   node-version:
     description: 'Node version'
     required: false
-    default: 'node16.Dockerfile'
+    default: '16'
 outputs:
   time:
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: ${{ inputs.node-version }}
+  image: 'node16.Dockerfile'
   args:
     - ${{ inputs.who-to-greet }}
