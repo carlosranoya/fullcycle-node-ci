@@ -23,7 +23,7 @@ fs.readFile('Dockerfile.lock', 'utf8' , (err, data) => {
           console.error(err)
           return
         }
-        //file written successfully
+        console.log("Dockerfile written successfully")
     })
 })
 
