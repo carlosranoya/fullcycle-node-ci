@@ -51,9 +51,16 @@ jobs:
       - run: node index
       
       # - run: curl https://viacep.com.br/ws/01001000/json/
-      - name: Hello world action step
-        uses: ./
-        id: Hello
+      # - name: Hello world action step
+      #   uses: ./
+      #   id: Hello
+      #   with:
+      #     who-to-greet: 'Carlos'
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
         with:
-          who-to-greet: 'Carlos'
+          context: .
+          push: false
+          tags: carlosranoya/fullcycle-node-ci:latest
 
