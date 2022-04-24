@@ -23,6 +23,7 @@ jobs:
     needs: matrix_prep
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix: 
         node: ['14', '16']
     steps:
@@ -35,10 +36,11 @@ jobs:
       - run: echo 'github.job ${{ github.job }}'
       - run: echo 'github.event_name ${{ github.event_name }}'
       - run: echo 'github.env ${{ github.env }}'
-      - run: echo 'steps ${{ toJSON(steps) }}'
-      - run: echo 'strategy ${{ toJSON(strategy) }}'
         env:
           node-version: ${{ matrix.node }}
+      - run: echo 'steps ${{ toJSON(steps) }}'
+      - run: echo 'strategy ${{ toJSON(strategy) }}'
+        
       # - uses: actions/checkout@v3
       # - uses: actions/setup-node@v3
       #   with:
