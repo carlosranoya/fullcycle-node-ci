@@ -41,10 +41,10 @@ jobs:
       - run: echo 'steps ${{ toJSON(steps) }}'
       - run: echo 'strategy ${{ toJSON(strategy) }}'
         
-      # - uses: actions/checkout@v3
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: ${{ matrix.node }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
       # - run: npm install
       # - run: npm test
       # - run: node index
