@@ -15,7 +15,7 @@ COPY src src
 RUN node --version
 RUN npm install
 RUN npm test
-RUN node index
+# RUN node index
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
