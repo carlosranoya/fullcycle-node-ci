@@ -2,13 +2,31 @@ name: ci-node-sonarcloud
 on: 
   push:
     branches: [ develop ]
+    
 jobs:
+
+  matrix_prep:
+    # Using a separate job and agent so as to be able to use tools like 'sed' and 'jq'
+    runs-on: ubuntu-latest
+    # Defining outputs of a job allows for easier consumption and use
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    # This step is explained more in a following section
+    - id: set-matrix
+      run: |
+        branchName=$(echo '${{ github.ref }}' | sed 's,refs/heads/,,g')  
+        matrix=$branchName               
+        echo ::set-output name=matrix::{\"include\":$(echo $matrix)}\"
+
   check-application:
+    needs: matrix_prep
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        action: ['./actions/node14', './actions/node16']
+        action: ['14', '16']
     steps:
+      - run: echo 'branch ${{needs.matrix_prep.outputs.matrix}}'
       - run: echo 'Hi ${{ job.container.id }}'
       - run: echo 'Hi ${{ env.node-action }}'
         env:
@@ -21,9 +39,9 @@ jobs:
       # - run: npm test
       # - run: node index
       # - run: curl https://viacep.com.br/ws/01001000/json/
-      - name: Hello world action step
-        uses: ${{ env.node-action }}
-        id: hello
-        with:
-          who-to-greet: 'Carlos'
+      # - name: Hello world action step
+      #   uses: ${{ env.node-action }}
+      #   id: hello
+      #   with:
+      #     who-to-greet: 'Carlos'
 
