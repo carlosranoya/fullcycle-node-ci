@@ -24,13 +24,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        action: ['14', '16']
+        node: ['14', '16']
     steps:
       - run: echo 'branch ${{needs.matrix_prep.outputs.matrix}}'
-      - run: echo 'Hi ${{ job.name }}'
-      - run: echo 'Hi ${{ env.node-action }}'
+      - run: echo 'github.ref ${{ github.ref }}'
+      - run: echo 'github.ref_name ${{ github.ref_name }}'
+      - run: echo 'github.ref_type ${{ github.ref_type }}'
+      - run: echo 'github.path ${{ github.path }}'
+      - run: echo 'github.repository ${{ github.repository }}'
+      - run: echo 'github.job ${{ github.job }}'
+      - run: echo 'github.event_name ${{ github.event_name }}'
+      - run: echo 'github.env ${{ github.env }}'
+      - run: echo 'steps ${{ JSON.stringify(steps) }}'
+      - run: echo 'strategy ${{ JSON.stringify(strategy) }}'
         env:
-          node-action: ${{ matrix.action }}
+          node-version: ${{ matrix.node }}
       # - uses: actions/checkout@v3
       # - uses: actions/setup-node@v3
       #   with:
