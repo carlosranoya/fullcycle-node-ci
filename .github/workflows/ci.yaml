@@ -9,7 +9,7 @@ jobs:
       matrix: 
         node: ['14', '16']
     steps:
-      - run: echo 'Hi ${{ job }}'
+      - run: echo 'Hi ${{ job.container.id }}'
       - run: echo 'Hi ${{ env.node-version }}'
         env:
           node-version: ${{ matrix.node }}
