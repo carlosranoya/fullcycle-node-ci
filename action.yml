@@ -14,7 +14,6 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'node${{ inputs.node-version }}.Dockerfile'
   args:
-    # - '--build-arg NODE_VERSION=node:${{ inputs.node-version }}'
     - ${{ inputs.who-to-greet }}
