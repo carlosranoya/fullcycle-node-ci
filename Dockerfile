@@ -1,5 +1,8 @@
 # Container image that runs your code
-FROM node:16
+ARG NODE_VERSION=node:16
+FROM ${NODE_VERSION}
+
+RUN echo ${NODE_VERSION}
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
@@ -8,6 +11,7 @@ COPY package.json /package.json
 COPY index.js /index.js
 COPY src src
 
+RUN node --version
 RUN npm install
 RUN npm test
 RUN node index

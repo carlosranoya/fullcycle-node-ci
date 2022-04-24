@@ -5,6 +5,10 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  node-version:
+    description: 'Node version'
+    required: false
+    default: '16'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -12,4 +16,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - '--build-arg NODE_VERSION=node:${{ inputs.node-version }}'
     - ${{ inputs.who-to-greet }}

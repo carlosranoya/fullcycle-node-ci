@@ -19,3 +19,4 @@ jobs:
         id: hello
         with:
           who-to-greet: 'Carlos'
+          node-version: '14'
