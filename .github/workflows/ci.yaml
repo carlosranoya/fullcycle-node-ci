@@ -47,7 +47,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - run: node buildNodeDockerfile ${{ matrix.node }}
-      # - run: npm install
+      - run: npm install
       - run: npm test
       # - run: node index
 
