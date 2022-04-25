@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: node14.Dockerfile
+      dockerfile: Dockerfile
       args:
         - NODE_VERSION=node:14
       

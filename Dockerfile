@@ -1,3 +1,4 @@
+ARG NODE_VERSION=node:16
 # Container image that runs your code
 # ARG NODE_VERSION=node:16
 FROM ${NODE_VERSION}
@@ -11,6 +12,8 @@ COPY entrypoint.sh package-lock.json package.json index.js ./
 # COPY index.js /index.js
 # COPY buildNodeDockerfile.js /buildNodeDockerfile.js
 COPY src src
+
+RUN ls -l
 
 RUN node --version && npm install && npm test
 # RUN npm install
