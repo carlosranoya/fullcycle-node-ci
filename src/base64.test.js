@@ -8,3 +8,17 @@ test("base64.encode 'abcdefg' to be equal to 'YWJjZGVmZw=='", ()=> {
 test("base64.decode 'YWJjZGVmZw==' to be equal to 'abcdefg'", ()=> {
     expect(base64.decode('YWJjZGVmZw==')).toBe('abcdefg')
 });
+
+
+const longString =  '123456789123456789qwertyuioqwertyuioasdfghjklasdfghjklzxcvbnm,.zxcvbnm,.' + 
+                    'QWERTYUIOQWERTYUIOASDFGHJKLASDFGHJKLZXCVBNM,.ZXCVBNM,.' +
+                    '123456789123456789qwertyuioqwertyuioasdfghjklasdfghjklzxcvbnm,.zxcvbnm,.' +
+                    'QWERTYUIOQWERTYUIOASDFGHJKLASDFGHJKLZXCVBNM,.ZXCVBNM,.' +
+                    '123456789098765432qwertyuiopoiuytrewasdfghjkl;lkjhgfdszxcvbnm,.,mnbvcxza';
+
+
+test("long string test", ()=> {
+    let encoded = base64.encode(longString);
+    let decoded = base64.decode(encoded);
+    expect(decoded).toBe(longString);
+});
