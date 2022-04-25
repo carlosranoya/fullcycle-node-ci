@@ -6,15 +6,14 @@ FROM ${NODE_VERSION}
 # RUN echo ${NODE_VERSION}
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh package-lock.json package.json index.js ./
+COPY entrypoint.sh package-lock.json index.js ./
 # COPY package-lock.json /package-lock.json
 # COPY package.json /package.json
 # COPY index.js /index.js
 # COPY buildNodeDockerfile.js /buildNodeDockerfile.js
 COPY src src
 
-RUN ls -l
-
+RUN ls
 RUN node --version && npm install && npm test
 # RUN npm install
 # RUN npm test

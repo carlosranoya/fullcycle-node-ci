@@ -1,3 +1,5 @@
 node_modules
+
 .scannerwork
 .sonar-scanner.local
+.sonarcloud.example.yaml
