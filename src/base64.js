@@ -50,11 +50,9 @@ function decode (s, shift=0)
   // replace any incoming padding with a zero pad (the 'A' character is zero)
   var p = ""
   if (s.charAt(s.length-1) == '=') {
+    p += "A"
     if (s.charAt(s.length-2) == '=') {
-      p = "AA";
-    }
-    else {
-      p = "A";
+      p += "A";
     }
   }
 
