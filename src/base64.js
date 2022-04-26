@@ -51,13 +51,14 @@ function decode (s, shift=0)
   var p = ""
   if (s.charAt(s.length-1) == '=') {
     if (s.charAt(s.length-2) == '=') {
-      p = "==";
+      p = "AA";
     }
     else {
-      p = "=";
+      p = "A";
     }
   }
-  
+
+  var r = ""; 
   s = s.substr(0, s.length - p.length) + p;
 
   // increment over the length of this encoded string, four characters at a time
