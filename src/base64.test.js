@@ -22,3 +22,9 @@ test("long string test", ()=> {
     let decoded = base64.decode(encoded);
     expect(decoded).toBe(longString);
 });
+
+test("simple string", ()=> {
+    let encoded = base64.encode("12345678");
+    let decoded = base64.decode(encoded);
+    expect(decoded).toBe("12345678");
+});

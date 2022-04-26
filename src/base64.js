@@ -57,10 +57,7 @@ function decode (s, shift=0)
       p = "=";
     }
   }
-  var p = (s.charAt(s.length-1) == '=' ? 
-          (s.charAt(s.length-2) == '=' ? 
-          'AA' : 'A') : "");
-  var r = ""; 
+  
   s = s.substr(0, s.length - p.length) + p;
 
   // increment over the length of this encoded string, four characters at a time
