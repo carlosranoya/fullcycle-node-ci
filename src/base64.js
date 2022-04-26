@@ -49,7 +49,8 @@ function decode (s, shift=0)
 
   // replace any incoming padding with a zero pad (the 'A' character is zero)
   var p = (s.charAt(s.length-1) == '=' ? 
-          (s.charAt(s.length-2) == '=' ? 'AA' : 'A') : ""); 
+          (s.charAt(s.length-2) == '=' ? 
+          'AA' : 'A') : "");
   var r = ""; 
   s = s.substr(0, s.length - p.length) + p;
 
