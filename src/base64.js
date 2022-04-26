@@ -1,8 +1,10 @@
 
 const base64chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-function encode (s)
+function encode (s, shift)
 {
+  let base = shiftBase(shift);
+
   // the result/encoded string, the padding string, and the pad count
   var r = ""; 
   var p = ""; 
@@ -31,18 +33,19 @@ function encode (s)
     n = [(n >>> 18) & 63, (n >>> 12) & 63, (n >>> 6) & 63, n & 63];
 
     // those four 6-bit numbers are used as indices into the base64 character list
-    r += base64chars[n[0]] + base64chars[n[1]] + base64chars[n[2]] + base64chars[n[3]];
+    r += base[n[0]] + base[n[1]] + base[n[2]] + base[n[3]];
   }
    // add the actual padding string, after removing the zero pad
   return r.substring(0, r.length - p.length) + p;
 }
 
-function decode (s)
+function decode (s, shift=0)
 {
   
+  let base = shiftBase(shift);
   // remove/ignore any characters not in the base64 characters list
   //  or the pad character -- particularly newlines
-  s = s.replace(new RegExp('[^'+base64chars.split("")+'=]', 'g'), "");
+  s = s.replace(new RegExp('[^'+base.split("")+'=]', 'g'), "");
 
   // replace any incoming padding with a zero pad (the 'A' character is zero)
   var p = (s.charAt(s.length-1) == '=' ? 
@@ -55,8 +58,8 @@ function decode (s)
 
     // each of these four characters represents a 6-bit index in the base64 characters list
     //  which, when concatenated, will give the 24-bit number for the original 3 characters
-    var n = (base64chars.indexOf(s.charAt(c)) << 18) + (base64chars.indexOf(s.charAt(c+1)) << 12) +
-            (base64chars.indexOf(s.charAt(c+2)) << 6) + base64chars.indexOf(s.charAt(c+3));
+    var n = (base.indexOf(s.charAt(c)) << 18) + (base.indexOf(s.charAt(c+1)) << 12) +
+            (base.indexOf(s.charAt(c+2)) << 6) + base.indexOf(s.charAt(c+3));
 
     // split the 24-bit number into the original three 8-bit (ASCII) characters
     r += String.fromCharCode((n >>> 16) & 255, (n >>> 8) & 255, n & 255);
