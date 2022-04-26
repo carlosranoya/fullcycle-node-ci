@@ -48,6 +48,15 @@ function decode (s, shift=0)
   s = s.replace(new RegExp('[^'+base.split("")+'=]', 'g'), "");
 
   // replace any incoming padding with a zero pad (the 'A' character is zero)
+  var p = ""
+  if (s.charAt(s.length-1) == '=') {
+    if (s.charAt(s.length-2) == '=') {
+      p = "==";
+    }
+    else {
+      p = "=";
+    }
+  }
   var p = (s.charAt(s.length-1) == '=' ? 
           (s.charAt(s.length-2) == '=' ? 
           'AA' : 'A') : "");
