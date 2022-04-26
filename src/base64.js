@@ -65,6 +65,16 @@ function decode (s)
   return r.substring(0, r.length - p.length);
 }
 
+function shiftBase(shift) {
+  let length = base64chars.length;
+  if (shift >= 0) {
+    return base64chars.substring(length-shift, length) + base64chars.substring(0, length-shift);
+  }
+  else {
+    return base64chars.substring(-shift, length) + base64chars.substring(0, -shift);
+  }
+}
+
 module.exports = {
   encode,
   decode
